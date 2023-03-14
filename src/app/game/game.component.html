@@ -1,0 +1,8 @@
+<h3>{{this.service.actualGameWords.hun}}</h3>
+    <input *ngIf="!this.service.resultState" type="text" [(ngModel)]="this.service.actualTry">
+    <button *ngIf="!this.service.resultState" (click)="this.service.check()">Check!</button>
+    <div *ngIf="this.service.resultState">
+            <p *ngIf="this.service.actualGameWords.eng == this.service.actualTry" style="color: green">Correct!</p>
+            <p *ngIf="this.service.actualGameWords.eng != this.service.actualTry" style="color: red">Incorrect..answer: {{this.service.actualGameWords.eng}}</p>
+        <button *ngIf="this.service.gameWords.length > 0" (click)="this.service.next()">Next Word!</button>
+    </div>

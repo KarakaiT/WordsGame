@@ -1,0 +1,39 @@
+<h1>Manage your words!</h1>
+
+<a href="" id="exportBtn">Export</a>
+<span> | </span>
+<input type="file" id="importFile" (change)="import($event)">
+
+
+<div class="formdiv">
+
+    <label>Word in hungarian</label>
+    <input [(ngModel)] ="this.service.actualWord.hun" type="text">
+
+    <label>Word in english</label>
+    <input [(ngModel)] ="this.service.actualWord.eng" type="text">
+
+    <button (click)="this.service.add()">Add word</button>
+
+</div>
+
+<div class="words">
+    <table>
+        <tr>
+            <th>Hungarian</th>
+            <th>English</th>
+            <th>Good tries</th>
+            <th>Bad tries</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let w of this.service.words">
+            <td>{{w.hun}}</td>
+            <td>{{w.eng}}</td>
+            <td>{{w.goods}}</td>
+            <td>{{w.bads}}</td>
+            <td>
+                <button (click)="this.service.remove(w.id)">Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>
